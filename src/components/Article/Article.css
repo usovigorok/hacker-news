@@ -1,0 +1,27 @@
+.Article {
+    height: 35px;
+}
+
+.title {
+    font-size: 13px;
+}
+
+.title a {
+    color: #000;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.subtext {
+    color: #828282;
+    font-size: 9px;
+}
+
+div.subtext {
+    margin-left: 12px;
+}
+
+.number {
+    color: #828282;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Article from '../components/Article';
+import Article from '../components/Article/Article';
 import axios from 'axios';
 
 class ArticleList extends Component {
@@ -36,14 +36,14 @@ class ArticleList extends Component {
             return <div>Loading...</div>;
         }
         
-        const articles = this.state.articles.map(article => {
+        const articles = this.state.articles.map((article, index) => {
             return (
-                <Article key={article.id} {...article} />
+                <Article key={article.id} index={index} {...article} />
             );
         });
 
         return (
-            <div className="container">
+            <div className="ArticleList container">
                 {articles}
             </div>
         );
