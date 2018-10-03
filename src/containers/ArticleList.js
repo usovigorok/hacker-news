@@ -11,30 +11,42 @@ class ArticleList extends Component {
     componentDidMount() {
         const that = this;
         axios.get('https://hacker-news.firebaseio.com/v0/topstories.json')
-        .then(function (response) {
-            debugger;
-            that.setState({
-                loading: false
+        .then((response) => {
+            const articlesIds = response.data.slice(0, 30);
+            const promises = articlesIds.map((articleId) => {
+                return axios.get(`https://hacker-news.firebaseio.com/v0/item/${articleId}.json`)
+                    .then((response) => {
+                        return Promise.resolve(response.data);
+                    });
             });
-            // handle success
-            console.log(response);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        });
+
+            Promise.all(promises).then((articles) => {
+                that.setState({
+                    loading: false,
+                    articles
+                });
+            }).catch(function (error) {
+                console.log(error);
+            });
+        });          
     }
 
     render() {
         if (this.state.loading) {
             return <div>Loading...</div>;
         }
-
-        return this.state.articles.map(article => {
+        
+        const articles = this.state.articles.map(article => {
             return (
-                <Article article={article} />
+                <Article key={article.id} {...article} />
             );
         });
+
+        return (
+            <div className="container">
+                {articles}
+            </div>
+        );
     }
 }
 
