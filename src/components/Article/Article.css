@@ -25,3 +25,8 @@ div.subtext {
 .number {
     color: #828282;
 }
+
+.grayarrow {
+    vertical-align: baseline;
+    cursor: pointer;
+}

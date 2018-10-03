@@ -3,6 +3,7 @@ import './Article.css';
 import {extractHostname} from '../../utils/utils';
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en';
+import grayarrow from '../../images/grayarrow.gif';
 
 TimeAgo.locale(en);
 const timeAgo = new TimeAgo('en-US');
@@ -14,6 +15,7 @@ const article = (props) => {
             <div className="col">
                 <div className="title">
                     <span className="number">{props.index + 1}.</span>
+                    <img src={grayarrow} className="grayarrow" />
                     <a href={props.url}>{props.title}</a>
                     {props.url ? <span className="subtext"> ({extractHostname(props.url)})</span> : ''}
                 </div>

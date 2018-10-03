@@ -43,7 +43,7 @@ class ArticleList extends Component {
         });
 
         return (
-            <div className="ArticleList container">
+            <div>
                 {articles}
             </div>
         );
