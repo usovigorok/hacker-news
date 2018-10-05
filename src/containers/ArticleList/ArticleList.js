@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Article from '../components/Article/Article';
+import Article from '../../components/Article/Article';
 import axios from 'axios';
 
 class ArticleList extends Component {
@@ -8,9 +8,21 @@ class ArticleList extends Component {
         loading: true,
     };
 
+    componentDidUpdate(prevProps) {
+        if (this.props.apiPath !== prevProps.apiPath) {
+            this.fetchData();
+        }
+    }
+
     componentDidMount() {
+        this.fetchData();      
+    }
+
+    fetchData() {
         const that = this;
-        axios.get('https://hacker-news.firebaseio.com/v0/topstories.json')
+        const { apiPath } = this.props;
+
+        axios.get(`https://hacker-news.firebaseio.com/v0/${apiPath}.json`)
         .then((response) => {
             const articlesIds = response.data.slice(0, 30);
             const promises = articlesIds.map((articleId) => {
@@ -28,7 +40,7 @@ class ArticleList extends Component {
             }).catch(function (error) {
                 console.log(error);
             });
-        });          
+        });        
     }
 
     render() {

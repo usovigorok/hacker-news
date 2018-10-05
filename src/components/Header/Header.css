@@ -20,6 +20,8 @@
 
 .Header a {
     cursor: pointer;
+    color: #000;
+    text-decoration: none;
 }
 
 .login {
