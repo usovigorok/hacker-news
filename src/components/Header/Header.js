@@ -11,10 +11,14 @@ const header = () => {
                 <span className="site-name">
                     <Link to="/news">Hacker News</Link>
                  </span>
-                <span className="menu">
-                    <Link to="/newest">new</Link> |
-                    <Link to="/comments">comments</Link>
-                    | show | ask | jobs | submit</span>
+                <div className="menu">
+                    <span><Link to="/newest">new</Link> |</span>
+                    <span><Link to="/comments">comments</Link> |</span>
+                    <span><Link to="/show">show</Link> |</span>
+                    <span><Link to="/ask">ask</Link> |</span>
+                    <span><Link to="/jobs">jobs</Link> |</span>
+                    <span>submit</span>
+                </div>
                 <span className="login">login</span>
             </div>
         </div>

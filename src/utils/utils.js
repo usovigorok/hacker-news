@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export function extractHostname(url) {
     if (!url) {
         return '';
@@ -14,4 +16,15 @@ export function extractHostname(url) {
     hostname = hostname.split('?')[0];
 
     return hostname;
+}
+
+export function loadRelatedData(itemsIds) {
+    const promises = itemsIds.map((itemId) => {
+        return axios.get(`https://hacker-news.firebaseio.com/v0/item/${itemId}.json`)
+            .then((response) => {
+                return Promise.resolve(response.data);
+            });
+    });
+
+    return Promise.all(promises);
 }

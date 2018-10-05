@@ -18,6 +18,15 @@
     vertical-align: middle;
 }
 
+.menu {
+    display: inline-block;
+}
+
+.menu span {
+    display: inline-block;
+    margin-left: 3px;
+}
+
 .Header a {
     cursor: pointer;
     color: #000;

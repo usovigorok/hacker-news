@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticleList from './containers/ArticleList/ArticleList';
+import ArticleList from './containers/ItemList/ItemList';
 import Header from './components/Header/Header';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -10,9 +10,12 @@ class App extends Component {
         <div className="container">
           <Header />
           <Switch>
-            <Route path="/" exact render={() => <ArticleList apiPath={'topstories'} /> } />
-            <Route path="/news" exact render={() => <ArticleList apiPath={'topstories'} /> } />
-            <Route path="/newest" exact render={() => <ArticleList apiPath={'newstories'} /> } />
+            <Route path="/" exact render={() => <ArticleList apiPath={'news'} /> } />
+            <Route path="/news" exact render={() => <ArticleList apiPath={'news'} /> } />
+            <Route path="/newest" exact render={() => <ArticleList apiPath={'newest'} /> } />
+            <Route path="/ask" exact render={() => <ArticleList apiPath={'ask'} /> } />
+            <Route path="/show" exact render={() => <ArticleList apiPath={'show'} /> } />
+            <Route path="/jobs" exact render={() => <ArticleList apiPath={'jobs'} /> } />
           </Switch>
         </div>
       </BrowserRouter>
