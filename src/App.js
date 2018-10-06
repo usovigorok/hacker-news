@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ArticleList from './containers/ItemList/ItemList';
+import ItemList from './containers/ItemList/ItemList';
 import Header from './components/Header/Header';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -10,12 +10,13 @@ class App extends Component {
         <div className="container">
           <Header />
           <Switch>
-            <Route path="/" exact render={() => <ArticleList apiPath={'news'} /> } />
-            <Route path="/news" exact render={() => <ArticleList apiPath={'news'} /> } />
-            <Route path="/newest" exact render={() => <ArticleList apiPath={'newest'} /> } />
-            <Route path="/ask" exact render={() => <ArticleList apiPath={'ask'} /> } />
-            <Route path="/show" exact render={() => <ArticleList apiPath={'show'} /> } />
-            <Route path="/jobs" exact render={() => <ArticleList apiPath={'jobs'} /> } />
+            <Route path="/" exact render={() => <ItemList apiPath={'topstories'} itemType={'topstories'} /> } />
+            <Route path="/news" exact render={() => <ItemList apiPath={'topstories'} itemType={'topstories'} /> } />
+            <Route path="/newest" exact render={() => <ItemList apiPath={'newstories'} itemType={'newstories'} /> } />
+            <Route path="/ask" exact render={() => <ItemList apiPath={'askstories'} itemType={'askstories'} /> }  />
+            <Route path="/show" exact render={() => <ItemList apiPath={'showstories'} itemType={'showstories'} /> } />
+            <Route path="/jobs" exact render={() => <ItemList apiPath={'jobstories'} itemType={'jobstories'} /> } />
+            <Route path="/newcomments" exact render={() => <ItemList apiPath={'updates'} itemType={'comments'} /> } />
           </Switch>
         </div>
       </BrowserRouter>

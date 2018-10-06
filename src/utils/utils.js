@@ -18,10 +18,14 @@ export function extractHostname(url) {
     return hostname;
 }
 
-export function loadRelatedData(itemsIds) {
+export function loadRelatedData(itemsIds, itemType) {
     const promises = itemsIds.map((itemId) => {
         return axios.get(`https://hacker-news.firebaseio.com/v0/item/${itemId}.json`)
             .then((response) => {
+                if (itemType && response.data.type !== itemType) {
+                    return Promise.resolve(null);
+                }
+
                 return Promise.resolve(response.data);
             });
     });

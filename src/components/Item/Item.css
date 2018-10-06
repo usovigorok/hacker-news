@@ -1,5 +1,9 @@
-.Article {
-    height: 35px;
+.Item, .Comment {
+    min-height: 35px;
+}
+
+.Comment {
+    margin-bottom: 23px;
 }
 
 .title {
@@ -13,13 +17,17 @@
     text-decoration: none;
 }
 
-.subtext {
+.subtext, .subtext-comment {
     color: #828282;
     font-size: 9px;
 }
 
 div.subtext {
     margin-left: 12px;
+}
+
+div.subtext.jobs {
+    margin: 0;
 }
 
 .number {

@@ -7,13 +7,13 @@ const header = () => {
     return (
         <div className="row Header">
             <div className="col">
-                <img src={logo} className="logo" />
+                <img src={logo} className="logo" alt="HN" />
                 <span className="site-name">
                     <Link to="/news">Hacker News</Link>
                  </span>
                 <div className="menu">
                     <span><Link to="/newest">new</Link> |</span>
-                    <span><Link to="/comments">comments</Link> |</span>
+                    <span><Link to="/newcomments">comments</Link> |</span>
                     <span><Link to="/show">show</Link> |</span>
                     <span><Link to="/ask">ask</Link> |</span>
                     <span><Link to="/jobs">jobs</Link> |</span>
