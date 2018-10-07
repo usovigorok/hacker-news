@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Item from '../../components/Item/Item';
 import axios from 'axios';
-import { loadRelatedData } from '../../utils/utils';
+import { loadRelatedData, loadParentData } from '../../utils/utils';
 
 class ItemsList extends Component {
     state = {
@@ -41,16 +41,27 @@ class ItemsList extends Component {
     fetchComments(response) {
         const ids = response.data.items;
         loadRelatedData(ids, 'comment').then((items) => {
-            debugger;
-            const preparedItems = items.filter(item => (item !== null));
+            let preparedItems = items.filter(item => (item !== null));
             preparedItems.sort((item1, item2) => {
                 return item2.time - item1.time;
             });
 
-            this.setState({
-                loading: false,
-                items: preparedItems  
-            });
+            loadParentData(preparedItems).then((parentData) => {
+                preparedItems = preparedItems.map(item => {
+                    let preparedParentData = parentData.flat(10);
+                    preparedParentData = preparedParentData.filter(value => value[item.id]);
+                    
+                    if (preparedParentData.length > 0) {
+                        item.parentData = preparedParentData[0][item.id];
+                    }
+                    return item; 
+                })
+
+                this.setState({
+                    loading: false,
+                    items: preparedItems  
+                });
+            });            
         });
     }
 

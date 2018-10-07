@@ -8,8 +8,12 @@ const timeAgo = new TimeAgo('en-US');
 
 const ItemSubline = (props) => {
     const timeLine = timeAgo.format(props.time * 1000);
+    const parentTitle = (props.parentData && props.parentData.title) || '';
     const className = 'subtext-comment';
-    const line = `${props.by} ${timeLine} | parent | on: Login_duress: A BSD authentication module for dure...`;
+    let line = ` ${props.by} ${timeLine} | parent`;
+    if (parentTitle) {
+        line += ` | on: ${parentTitle}`;
+    }
 
     return (
         <div className={className}>

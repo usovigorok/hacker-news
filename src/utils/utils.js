@@ -32,3 +32,22 @@ export function loadRelatedData(itemsIds, itemType) {
 
     return Promise.all(promises);
 }
+
+export function loadParentData(items) {
+    const promises = items.map((item) => {
+        if (!item.parent) {
+            return null;
+        }
+        return axios.get(`https://hacker-news.firebaseio.com/v0/item/${item.parent}.json`)
+            .then((response) => {
+                if (response.data.parent) {
+                    return loadParentData([response.data]);
+                }  
+                const result = {};
+                result[item.id] = response.data;
+                return Promise.resolve(result);
+            });
+    });
+
+    return Promise.all(promises);
+}
