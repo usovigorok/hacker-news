@@ -9,7 +9,7 @@ const header = () => {
             <div className="col">
                 <img src={logo} className="logo" alt="HN" />
                 <span className="site-name">
-                    <NavLink to="/news">Hacker News</NavLink>
+                    <NavLink activeClassName='' to="/news">Hacker News</NavLink>
                  </span>
                 <div className="menu">
                     <span><NavLink activeClassName='active' to="/newest">new</NavLink> |</span>
