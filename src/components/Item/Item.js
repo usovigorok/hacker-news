@@ -21,7 +21,7 @@ const item = (props) => {
                         </span>;
     }
 
-    let title = props.title;
+    let title = props.title || props.text;
 
     return (
         <div className="Item row">

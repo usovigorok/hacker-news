@@ -77,7 +77,7 @@ class ItemsList extends Component {
 
     render() {
         if (this.state.loading) {
-            return <div>Loading...</div>;
+            return <div className="loading">Loading...</div>;
         }
         
         const items = this.state.items.map((item, index) => {

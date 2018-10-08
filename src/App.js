@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ItemList from './containers/ItemList/ItemList';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route path="/jobs" exact render={() => <ItemList apiPath={'jobstories'} itemType={'jobstories'} /> } />
             <Route path="/newcomments" exact render={() => <ItemList apiPath={'updates'} itemType={'comments'} /> } />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     );

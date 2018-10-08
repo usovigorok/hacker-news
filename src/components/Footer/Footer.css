@@ -1,0 +1,30 @@
+.Footer .more {
+    font-size: 10pt;
+    color: #828282;
+    margin: 10px 0 10px 33px;
+}
+
+.footer-line {
+    background-color: rgb(255, 102, 0);
+    height: 2px;
+}
+
+.footer-menu {
+    font-size: 8pt;
+    color: #000;
+    margin-top: 14px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.search {
+    font-size: 10pt;
+    color: #828282;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.search input {
+    padding: 1px 0px;
+    height: 21px;
+}
